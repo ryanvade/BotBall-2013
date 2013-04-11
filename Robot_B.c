@@ -4,7 +4,7 @@ int main()
 {
 	printf("Hello, World!\n");
 	int rport=1, leftmtr=3, rightmtr=0; // identify ports used, might need to change
-	int threshold=500; // light threshold in the room
+	int threshold=700; // light threshold in the room
 	int high=100, low=-10; //motor power for arc. Will need to change to perfect drive. 
 	while (b_button()==0) {} // start after pushing B 
 	/* To be replaced with wait_for_light(port#); so that light starts the robot. Right now it is started with B*/
