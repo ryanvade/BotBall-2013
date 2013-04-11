@@ -13,14 +13,14 @@ int main()
 	int rport=1; // identify ports used, might need to change
 	printf("Light sensor is supposed to be port %d. ", &rport);
 	int threshold=500; // light threshold in the room.  Black is around 0, plus standard light brings the light at ~512
-	int high=100, low=0; //motor power for arc. Will need to change to perfect drive.  * Probably not needed for Create.
+	//int high=100, low=0; //motor power for arc. Will need to change to perfect drive.  * Probably not needed for Create.
 			
-	int line_Follow(threshold, rport, high, low);
+	int line_Follow(int threshold, int rport, int high, int low);
 			
 	create_disconnect(); // disconnect from the create
 	return 0;
 }
-int line_Follow(int threshold,int rport, int high, int low,)
+int line_Follow(int threshold,int rport, int high, int low)
 	{
 			printf("\n The threshold is currently at %d", &threshold);
 	while (b_button()==0) {} // start after pushing B 
@@ -38,5 +38,6 @@ int line_Follow(int threshold,int rport, int high, int low,)
 			if (a_button()!=0) break; } // or button pressed 
 			// to be replaced with a sensor
 			create_stop(); // stop all create motors. * not used in the create example. 
+										}
 	return 0;
 	}
