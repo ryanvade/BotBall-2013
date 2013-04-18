@@ -104,11 +104,11 @@ int main() {
 		}
 int dropoffBotGuy()
 		{
-			int i = 0; //create a counting varialble.  Initiate it to be 0
+			/*int i = 0; //create a counting varialble.  Initiate it to be 0
 			set_each_analog_state(1,0,0,0,0,0,0,0); //make port 0 a floating port. (floting point return)
 			msleep(200); //wait for .2 seconds for the SONAR to adjust. Time may need to be changed.
 			i=analog(0); //Make i equal to the output of the SONAR
-			while( i < 10) // while the sensor detects the nearest object (hopefully board pvc)
+			while() 
 			{
 				printf("Creeping forward.\n");
 				create_drive_direct(-30,-30); // move the create backwards at 30%
@@ -116,7 +116,10 @@ int dropoffBotGuy()
 			{
 				printf("Arrived. Removing Bot Guy\n");
 				create_Stop(); // stop all motors
-			}
+			} */
+			create_drive_direct(-30,-30);
+			msleep(2000); // drive for 2 seconds
+			create_stop(); // stop all motors
 			int initialize(); // to reset the create grabber
 			return 0; // return TRUE if the function completed sucessfully ;)
 int returnBotGuy()
@@ -167,7 +170,7 @@ int returnBotGuy()
 														set_create_distance(0); // reset create distance
 														}
 															set_create_total_angle(0); // reset create total angle
-															while ( create_total_angle() <= 45) // while the create has not turned 90 degrees. Does this matter what direction? 
+															while ( get_create_total_angle() <= 45) // while the create has not turned 90 degrees. Does this matter what direction? 
 																 {
 																create_drive_direct(0,-75); // move the right motor at backwards at 75%. Don't move the left motor. Cause a pivot.
 																}
@@ -188,7 +191,7 @@ int returnBotGuy()
 						set_create_distance(0); // reset create distance
 						}
 							set_create_total_angle(0); // reset create total angle
-							while ( create_total_angle() <= 45) // while the create has not turned 90 degrees. Does this matter what direction? 
+							while ( get_create_total_angle() <= 45) // while the create has not turned 90 degrees. Does this matter what direction? 
 							{
 							create_drive_direct(0,-75); // move the right motor at backwards at 75%. Don't move the left motor. Cause a pivot.
 							}
@@ -200,3 +203,5 @@ int returnBotGuy()
 		int dropoffBotGuy();
 		return 0;							
 		}
+	}
+}
