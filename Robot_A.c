@@ -5,6 +5,7 @@ int move(); // tell the compiler about the move function
 int grabBotGuy(); // tell the compiler about the grabBotGuy function
 int returnBotGuy();// tell the compiler about th returnBotGuy function
 int dropoffBotGuy(); // tell the compiler about the sonar function
+int moveForCube(); // tell the compiler about the moveForCube
 
 int main() {
 wait_for_light(3); // 3 is the port number. This function starts the robot after the light is turned on.
@@ -30,8 +31,11 @@ printf("Returning Bot Guy\n"); // print what is happening
 
 printf("Get Lost Bot Guy\n");// print what is happening
  dropoffBotGuy(); // run the dropoffBotGuy function
-
 create_stop(); // make sure all motors are stoped. 
+
+printf("I am off to see the cuve");
+int moveForCube();
+create_stop();
 create_disconnect(); // disconnect from the create
 printf("All Done!"); 
 return 0;
@@ -57,7 +61,7 @@ int move ()
 	msleep(2000); //drive for 2 seconds
 	create_stop();//stop the motors 
 	create_drive_direct(-100,-100); // both motors go backwards 100%
-	msleep(7500); // drive for 7.5 seconds
+	msleep(7000); // drive for 7 seconds
 	create_stop();
 return 0; // return TRUE if the function completed sucessfully ;)
 }
@@ -73,43 +77,53 @@ return 0; // return a TRUE if the function completes succesfully. ;)
 int returnBotGuy()
 {
 	printf("I must return to base");
-	create_drive_direct(-100,-100);// move backwards at 100 %
-	msleep(7500); // keep going backwards for 7.5 seconds
+	create_drive_direct(100,100);// move backwards at 100 %
+	msleep(8000); // keep going backwards for 8 seconds
 	create_stop(); // stop all motors
-	create_drive_direct(100,-100);// pivot to face left 
+	create_drive_direct(-100,100);// pivot to face left 
 	msleep(2000); //drive for 2 seconds
 	create_stop(); // stop all movement
 	create_drive_direct(-100,-100); // move backwards at 100%
-	msleep(7000);//drive for 7 seconds
+	msleep(6000);//drive for 6 seconds
 	create_stop(); // stop all movement
-	create_drive_direct(-100,-50); // pivot right a little
-	msleep(2000); //keep pivoting for 2 seconds
+	create_drive_direct(100,-100); // pivot right a little
+	msleep(2000); //keep pivoting for  seconds
 	create_stop(); // stop all motors
 	create_drive_direct(-100,-100); // drive backwards at 100%
-	msleep(6000); // keep moving for 6 seconds
+	msleep(1000); // keep moving for 2 seconds
 	create_stop(); // stop all motors
-	create_drive_direct(-50,-100); // pivot left a little
-	msleep(2000); // keep pivoting for 2 seconds
+	create_drive_direct(-100,100); // pivot right a little
+	msleep(2000); //keep pivoting for  seconds
 	create_stop(); // stop all motors
-	create_drive_direct(-100,-100); // drive backwards at 100%
-	msleep(2000); // keep moving for  seconds
-	create_stop(); // stop all motors
+	
 return 0;	
 }
 
 int dropoffBotGuy()
 {	
 ao();
+	motor(1,-100);// move the motor in reverse
+	motor(3,-100); // move the motor in reverse
 create_drive_direct(-100,-100);
-msleep(2000); // keep moving backwards for 2 seconds
+msleep(6000); // keep moving backwards for 6 seconds
+create_stop(); //stop the motors
+create_drive_direct(0,-65); // pivot right a little
+msleep(2000); // keep pivoting for 2 seconds
 create_stop(); // stop all motors
-create_drive_direct(-100,100); // pivot left
-msleep(2000); // keep movig for 2 seconds
 create_drive_direct(-100,-100); // move backwards at 100%
-msleep(1000); // keep moving for 1 second
-create_drive_direct(100,-100); // pivot right
-msleep(2000); // keep movig for 2 seconds
+msleep(15000); // keep moving backwards for 1.5 seconds
+create_stop(); // stop all motor
 
-int initialize(); // to reset the create grabber
-return 0; // return TRUE if the function completed sucessfully ;)
+motor(1,-100); // move motor 1 at -100%
+motor(3,-100); // move motor 3 at -100%
+msleep(500); // stop moving the motors after .5 seconds
+return 0;
+}
+
+int moveForCube()
+{
+	create_drive_direct(-100,-100); // move both motors backwards at 100%
+	msleep(2000); // keep moving for 2 seconds
+	create_stop();
+	return 0;
 }
